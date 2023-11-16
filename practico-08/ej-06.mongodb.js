@@ -3,32 +3,32 @@
 use("mflix")
 
 db.comments.aggregate([
-  {
-    $group: {
-      _id: "$email",
-      name: {
-        $first: "$name"
-      },
-      total: {
-        $sum: 1
-      },
+    {
+        $group: {
+            _id: "$email",
+            name: {
+                $first: "$name"
+            },
+            total: {
+                $sum: 1
+            },
+        }
+    },
+    {
+        $sort: {
+            total: -1
+        }
+    },
+    {
+        $limit: 10
+    },
+    {
+        $project: {
+            _id: 0,
+            "Nombre": "$name",
+            "Email": "$_id",
+            "Cantidad de Comentarios": "$total"
+        }
     }
-  },
-  {
-    $sort: {
-      total: -1
-    }
-  },
-  {
-    $limit: 10
-  },
-  {
-    $project: {
-      _id: 0,
-      nombre: "$name",
-      email: "$_id",
-      "total de comentarios": "$total"
-    }
-  }
 ])
 
