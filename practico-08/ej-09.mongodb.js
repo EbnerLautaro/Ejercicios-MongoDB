@@ -2,6 +2,7 @@
 
 use("mflix")
 
+db.top5genres.find()
 
 db.createView(
     "top5genres",
@@ -36,7 +37,7 @@ db.createView(
         },
         {
             $limit: 5
-        }
+        },
     ]
 )
 

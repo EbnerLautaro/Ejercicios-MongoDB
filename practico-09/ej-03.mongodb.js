@@ -18,7 +18,7 @@ db.runCommand({
             ],
             properties: {
                 theaterId: {
-                    bsonType: "number"
+                    bsonType: "int"
                 },
                 location: {
                     bsonType: "object",
@@ -59,7 +59,6 @@ db.runCommand({
                         }
                     }
                 },
-                
             },
         }
     },
