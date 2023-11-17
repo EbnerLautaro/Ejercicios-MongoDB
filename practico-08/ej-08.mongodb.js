@@ -2,7 +2,7 @@
 use("mflix")
 db.movies.aggregate()
 
-
+// ESTA MAL VER EL EJ 9
 db.movies.aggregate([
     {
         $lookup: {
