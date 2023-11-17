@@ -12,7 +12,7 @@ db.movies.aggregate([
     },
     {
         $match: {
-          directors: "Jules Bass"
+            directors: "Jules Bass"
         }
     },
     {
@@ -22,7 +22,7 @@ db.movies.aggregate([
         $group: {
             _id: "$cast",
             movies: {
-                $addToSet: {
+                $push: {
                     title: "$title",
                     year: "$year"
                 }
@@ -40,15 +40,14 @@ db.movies.aggregate([
         }
     },
     {
-        $unwind: "$movies"
-    },
-    {
         $project: {
             _id: 0,
             actor: "$_id",
-            titulo: "$movies.title",
-            año: "$movies.year",
+            movies: "$movies",
         }
-    }
+    },
+    // {
+    //     $count: "asda"
+    // }
 ])
 
